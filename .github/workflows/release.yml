@@ -19,6 +19,7 @@ jobs:
        sdk:
           - openwrt-25.12.0
           - release
+          
     steps:
       - uses: actions/checkout@v4
         with:
