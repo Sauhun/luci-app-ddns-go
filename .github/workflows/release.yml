@@ -25,7 +25,7 @@ jobs:
       - name: Building packages
         uses: sbwml/openwrt-gh-action-sdk@go1.25
         env:
-          ARCH: ${{ matrix.arch }}-openwrt-v25.12.0
+          ARCH: ${{ matrix.arch }}-openwrt-24.10
           FEEDNAME: packages_ci
           PACKAGES: luci-app-ddns-go
           NO_REFRESH_CHECK: true
@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.arch }}
-          path: bin/packages/${{ matrix.arch }}/packages_ci/*.apk
+          path: bin/packages/${{ matrix.arch }}/packages_ci/*.ipk
 
       - name: Upload packages
         uses: ncipollo/release-action@v1
@@ -43,4 +43,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           replacesArtifacts: true
-          artifacts: "bin/packages/${{ matrix.arch }}/packages_ci/*.apk"
+          artifacts: "bin/packages/${{ matrix.arch }}/packages_ci/*.ipk"
